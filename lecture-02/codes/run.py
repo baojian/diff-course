@@ -46,14 +46,22 @@ def main():
     # Device / accelerator logic
     # ----------------------
     trainer_params = config['trainer_params'].copy()
-    num_gpus = trainer_params.pop("gpus", 0)
+
+    # "gpus" can be an int (e.g., 1) or a list (e.g., [0, 1])
+    raw_gpus = trainer_params.pop("gpus", 0)
     
-    if torch.cuda.is_available() and num_gpus:
+    if isinstance(raw_gpus, (list, tuple)):
+        num_gpus = len(raw_gpus)
+        devices = list(raw_gpus)        # pass the list directly to Trainer
+    else:
+        num_gpus = int(raw_gpus) if raw_gpus else 0
+        devices = num_gpus if num_gpus > 0 else 1   # will be overridden for CPU branch anyway
+    
+    if torch.cuda.is_available() and num_gpus > 0:
         accelerator = "gpu"
-        devices = num_gpus
         strategy = DDPStrategy(find_unused_parameters=False) if num_gpus > 1 else None
         cudnn.benchmark = True
-        print(f"Using CUDA with {num_gpus} GPU(s).")
+        print(f"Using CUDA with {num_gpus} GPU(s): {devices}")
     elif getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
         # Apple Silicon (M1/M2/M3) path
         accelerator = "mps"
