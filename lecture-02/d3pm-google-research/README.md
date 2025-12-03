@@ -38,3 +38,11 @@ booktitle = {ICML Workshop on Invertible Neural Networks, Normalizing Flows, and
 year      = {2021}
 }
 ```
+
+```
+conda create -n d3pm python=3.9
+conda activate d3pm
+conda install -c conda-forge "jax=0.3.14" "jaxlib=0.3.14"
+pip install --upgrade pip
+pip install -r requirements.txt
+```

@@ -22,7 +22,7 @@ set -x
 virtualenv -p python3 .venv_d3pm
 source .venv_d3pm/bin/activate
 pip install --upgrade pip
-pip install -r d3pm/requirements.txt
+pip install -r requirements.txt
 
 python -m d3pm.images.main_test
 python -m d3pm.text.main_test
