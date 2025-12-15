@@ -1,0 +1,25 @@
+hidden_dimensions:
+  - hidden_dim: 1000
+    num_epochs: 10
+    learning_rate: 0.1
+    display_dim1: 28
+    display_dim2: 28
+    use_gaussian: false
+  - hidden_dim: 500
+    num_epochs: 10
+    learning_rate: 0.1
+    display_dim1: 25
+    display_dim2: 40
+    use_gaussian: false
+  - hidden_dim: 250
+    num_epochs: 10
+    learning_rate: 0.1
+    display_dim1: 25
+    display_dim2: 20
+    use_gaussian: false
+  - hidden_dim: 2
+    num_epochs: 30
+    learning_rate: 0.001
+    display_dim1: 25
+    display_dim2: 10
+    use_gaussian: true
