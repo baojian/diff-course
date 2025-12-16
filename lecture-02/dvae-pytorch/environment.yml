@@ -1,15 +1,17 @@
 name: diff-course
 channels:
-  - defaults
+  - pytorch
+  - nvidia
+  - conda-forge
 dependencies:
   - python=3.12
   - jupyterlab
   - huggingface_hub
   - pytorch
-  - torchaudio
   - torchvision
-  - conda-forge::scikit-learn
+  - torchaudio
+  - pytorch-cuda=12.4
+  - scikit-learn
   - matplotlib
   - torchinfo
   - manim
-prefix: /opt/anaconda3/envs/diff-course
