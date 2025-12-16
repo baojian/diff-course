@@ -1,0 +1,2 @@
+/mnt/data/baojian/anaconda3/envs/diff-course/lib/python3.12/site-packages/torch/nn/_reduction.py:51: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
